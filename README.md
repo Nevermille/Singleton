@@ -1,4 +1,7 @@
 # Singleton
+
+[![Build Status](https://travis-ci.com/Nevermille/Singleton.svg?branch=master)](https://travis-ci.com/Nevermille/Singleton) [![BCH compliance](https://bettercodehub.com/edge/badge/Nevermille/Singleton?branch=master)](https://bettercodehub.com/)
+
 ## Overview
 
 A simple PHP class for singleton
