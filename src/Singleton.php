@@ -40,7 +40,10 @@ abstract class Singleton
      * @brief The constructor
      * @return void
      */
-    abstract protected function __construct();
+    protected function __construct()
+    {
+        // Constructor body
+    }
 
     /**
      * @brief Creates the instance if it doesn't exists and returns it
