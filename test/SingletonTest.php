@@ -1,4 +1,6 @@
-<?php namespace Lianhua\Singleton;
+<?php namespace Lianhua\Singleton\Test;
+
+use PHPUnit\Framework\TestCase;
 
 /*
 Singleton Library
@@ -19,39 +21,43 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 /**
- * @file Singleton.php
+ * @file SingletonTest.php
  * @author Camille Nevermind
  */
 
 /**
- * @class Singleton
- * @brief The singleton class
- * @package Lianhua\Singleton
+ * @class SingletonTest
+ * @brief The tests for Singleton
+ * @package Lianhua\Singleton\Test
  */
-abstract class Singleton
+class SingletonTest extends TestCase
 {
     /**
-     * @brief The only instance of this class
-     * @var Singleton $instance
-     */
-    protected static $instance = null;
-
-    /**
-     * @brief The constructor
+     * @brief Sets up the test environement
      * @return void
      */
-    abstract protected function __construct();
+    public static function setUpBeforeClass(): void
+    {
+        require_once __DIR__ . DIRECTORY_SEPARATOR . "SimpleSingleton.php";
+    }
 
     /**
-     * @brief Creates the instance if it doesn't exists and returns it
-     * @return Singleton The instance
+     * @brief All the tests for class implementation
+     * @return void
      */
-    public static function get(): Singleton
+    public function testClass()
     {
-        if (self::$instance === null) {
-            self::$instance = new static();
-        }
+        $s = SimpleSingleton::get();
 
-        return self::$instance;
+        $this->assertNotNull($s);
+        $this->assertEquals(0, $s->getN());
+
+        $s->setN(3);
+
+        $this->assertEquals(3, $s->getN());
+
+        $s2 = SimpleSingleton::get();
+
+        $this->assertEquals(3, $s2->getN());
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace Lianhua\Singleton;
+<?php namespace Lianhua\Singleton\Test;
+
+use Lianhua\Singleton\Singleton;
 
 /*
 Singleton Library
@@ -19,39 +21,48 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 /**
- * @file Singleton.php
+ * @file SimpleSingleton.php
  * @author Camille Nevermind
  */
 
 /**
- * @class Singleton
- * @brief The singleton class
- * @package Lianhua\Singleton
+ * @class SimpleSingleton
+ * @brief The singleton implementation for tests
+ * @package Lianhua\Singleton\Test
  */
-abstract class Singleton
+class SimpleSingleton extends Singleton
 {
     /**
-     * @brief The only instance of this class
-     * @var Singleton $instance
+     * @brief Just an int
+     * @var int $n
      */
-    protected static $instance = null;
+    private $n;
 
     /**
      * @brief The constructor
      * @return void
      */
-    abstract protected function __construct();
+    protected function __construct()
+    {
+        $this->n = 0;
+    }
 
     /**
-     * @brief Creates the instance if it doesn't exists and returns it
-     * @return Singleton The instance
+     * @brief Sets the int value
+     * @param int $n The value
+     * @return void
      */
-    public static function get(): Singleton
+    public function setN(int $n): void
     {
-        if (self::$instance === null) {
-            self::$instance = new static();
-        }
+        $this->n = $n;
+    }
 
-        return self::$instance;
+    /**
+     * @brief Returns the int value
+     * @return int The int value
+     */
+    public function getN(): int
+    {
+        return $this->n;
     }
 }
