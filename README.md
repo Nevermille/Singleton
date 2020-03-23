@@ -14,3 +14,28 @@ Just use composer in your project:
 ```
 composer require lianhua/singleton
 ```
+
+## Usage
+
+Create a class extending \Lianhua\Singleton\Singleton, that's all.
+
+```php
+class MySingleton extends \Lianhua\Singleton\Singleton
+{
+    // Your methods and properties here
+}
+```
+
+If you need a constructor, make sure it's a protected one
+
+```php
+class MySingleton extends \Lianhua\Singleton\Singleton
+{
+    private $n;
+
+    protected function __construct()
+    {
+        $this->n = 0;
+    }
+}
+```
