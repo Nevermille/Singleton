@@ -1,4 +1,4 @@
-<?php namespace Lianhua\Singleton;
+<?php namespace Lianhua\Singleton\Test;
 
 /*
 Singleton Library
@@ -19,22 +19,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 /**
- * @file Singleton.php
+ * @file SecondSingleton.php
  * @author Camille Nevermind
  */
 
 /**
- * @class Singleton
- * @brief The singleton class
- * @package Lianhua\Singleton
+ * @class SecondSingleton
+ * @brief The singleton implementation for tests
+ * @package Lianhua\Singleton\Test
  */
-trait Singleton
+class SecondSingleton
 {
+    use \Lianhua\Singleton\Singleton;
+
     /**
-     * @brief The only instance of this class
-     * @var self $instance
+     * @brief Just an int
+     * @var int $n
      */
-    protected static $instance = null;
+    private $n;
 
     /**
      * @brief The constructor
@@ -42,19 +44,25 @@ trait Singleton
      */
     protected function __construct()
     {
-        // Constructor body
+        $this->n = 1;
     }
 
     /**
-     * @brief Creates the instance if it doesn't exists and returns it
-     * @return self The instance
+     * @brief Sets the int value
+     * @param int $n The value
+     * @return void
      */
-    public static function get(): self
+    public function setN(int $n): void
     {
-        if (self::$instance === null) {
-            self::$instance = new static();
-        }
+        $this->n = $n;
+    }
 
-        return self::$instance;
+    /**
+     * @brief Returns the int value
+     * @return int The int value
+     */
+    public function getN(): int
+    {
+        return $this->n;
     }
 }

@@ -1,7 +1,5 @@
 <?php namespace Lianhua\Singleton\Test;
 
-use Lianhua\Singleton\Singleton;
-
 /*
 Singleton Library
 Copyright (C) 2020  Lianhua Studio
@@ -30,8 +28,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * @brief The singleton implementation for tests
  * @package Lianhua\Singleton\Test
  */
-class SimpleSingleton extends Singleton
+class SimpleSingleton
 {
+    use \Lianhua\Singleton\Singleton;
+
     /**
      * @brief Just an int
      * @var int $n
