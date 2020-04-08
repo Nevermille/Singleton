@@ -39,6 +39,7 @@ class SingletonTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         require_once __DIR__ . DIRECTORY_SEPARATOR . "SimpleSingleton.php";
+        require_once __DIR__ . DIRECTORY_SEPARATOR . "SecondSingleton.php";
     }
 
     /**
@@ -48,16 +49,23 @@ class SingletonTest extends TestCase
     public function testClass()
     {
         $s = SimpleSingleton::get();
+        $t = SecondSingleton::get();
 
         $this->assertNotNull($s);
+        $this->assertNotNull($t);
         $this->assertEquals(0, $s->getN());
+        $this->assertEquals(1, $t->getN());
 
         $s->setN(3);
+        $t->setN(5);
 
         $this->assertEquals(3, $s->getN());
+        $this->assertEquals(5, $t->getN());
 
         $s2 = SimpleSingleton::get();
+        $t2 = SecondSingleton::get();
 
         $this->assertEquals(3, $s2->getN());
+        $this->assertEquals(5, $t2->getN());
     }
 }
