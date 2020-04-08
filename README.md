@@ -20,11 +20,12 @@ composer require lianhua/singleton
 
 ## Usage
 
-Create a class extending \Lianhua\Singleton\Singleton, that's all.
+Create a class using \Lianhua\Singleton\Singleton trait, that's all.
 
 ```php
-class MySingleton extends \Lianhua\Singleton\Singleton
+class MySingleton
 {
+    use \Lianhua\Singleton\Singleton;
     // Your methods and properties here
 }
 ```
@@ -32,8 +33,43 @@ class MySingleton extends \Lianhua\Singleton\Singleton
 If you need a constructor, make sure it's a protected one
 
 ```php
+class MySingleton
+{
+    use \Lianhua\Singleton\Singleton;
+
+    private $n;
+
+    protected function __construct()
+    {
+        $this->n = 0;
+    }
+}
+```
+
+## Upgrading
+### From 1.0 to 2.0
+
+Singleton became a trait instead of a class in order to create many singleton classes. Please edit your class like this:
+
+**Then**
+```php
 class MySingleton extends \Lianhua\Singleton\Singleton
 {
+    private $n;
+
+    protected function __construct()
+    {
+        $this->n = 0;
+    }
+}
+```
+
+**Now**
+```php
+class MySingleton
+{
+    use \Lianhua\Singleton\Singleton;
+
     private $n;
 
     protected function __construct()
